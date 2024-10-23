@@ -1,10 +1,10 @@
-enhavo_media_theme_file:
-    path:  /media/file/{id}/{shortMd5Checksum}/{filename}
+enhavo_media_theme_format:
+    path:  /media/format/{id}/{format}/{shortMd5Checksum}/{filename}
     methods: [GET]
     defaults:
-        _expose: [theme]
+        _expose: [theme, admin]
         _endpoint:
-            type: media_file
+            type: media_format
             find_by: [id, filename]
             checksum_test: true
             checksum_parameter: shortMd5Checksum
