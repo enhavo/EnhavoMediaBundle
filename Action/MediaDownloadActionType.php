@@ -6,21 +6,26 @@ use Enhavo\Bundle\ApiBundle\Data\Data;
 use Enhavo\Bundle\ResourceBundle\Action\AbstractActionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MediaCropActionType extends AbstractActionType
+class MediaDownloadActionType extends AbstractActionType
 {
     public function createViewData(array $options, Data $data, object $resource = null): void
     {
-        $data->set('method', $options['method']);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'model' => 'MediaCropAction',
+            'label' => 'media.form.action.download',
+            'translation_domain' => 'EnhavoMediaBundle',
+            'icon' => 'cloud_download',
+            'component' => 'action-media-form',
+            'model' => 'MediaDownloadAction',
         ]);
+    }
 
-        $resolver->setRequired([
-            'method'
-        ]);
+    public static function getName(): ?string
+    {
+        return 'media_download';
     }
 }
